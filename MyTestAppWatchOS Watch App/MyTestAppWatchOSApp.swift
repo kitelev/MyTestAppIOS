@@ -23,11 +23,8 @@ struct MyTestAppWatchOS_Watch_AppApp: App {
     private func handleReceivedTimerData(_ timerData: TimerData?) {
         guard let timerData = timerData else { return }
 
-        // Update local timer model with received data
-        timerModel.state = timerData.state
-        timerModel.elapsedTime = timerData.elapsedTime
-        timerModel.startTime = timerData.startTime
-        timerModel.pausedTime = timerData.pausedTime
+        // Sync timer model with received data
+        timerModel.syncFrom(timerData)
     }
 
     // MARK: - Handle Timer Commands

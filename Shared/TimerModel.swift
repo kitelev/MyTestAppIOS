@@ -64,6 +64,23 @@ public class TimerModel: ObservableObject {
         stopTimer()
     }
 
+    // MARK: - Synchronization
+    public func syncFrom(_ timerData: TimerData) {
+        // Stop current timer first
+        stopTimer()
+
+        // Update all properties
+        state = timerData.state
+        elapsedTime = timerData.elapsedTime
+        startTime = timerData.startTime
+        pausedTime = timerData.pausedTime
+
+        // Start timer if running
+        if state == .running {
+            startTimer()
+        }
+    }
+
     // MARK: - Timer Management
     private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
