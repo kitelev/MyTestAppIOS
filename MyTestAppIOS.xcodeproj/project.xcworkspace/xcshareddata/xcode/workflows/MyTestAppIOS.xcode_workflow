@@ -1,0 +1,18 @@
+{
+  "name" : "MyTestAppIOS CI",
+  "description" : "Build and test on every push",
+  "trigger" : {
+    "kind" : "ON_EVERY_PUSH"
+  },
+  "actions" : [
+    {
+      "actionType" : {
+        "id" : "com.apple.dt.xcodebuild"
+      },
+      "scheme" : "MyTestAppIOS",
+      "platform" : "iOS",
+      "destination" : "ANY_IOS_DEVICE",
+      "configuration" : "Release"
+    }
+  ]
+}
