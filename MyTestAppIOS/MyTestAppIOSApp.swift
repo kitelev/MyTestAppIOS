@@ -20,14 +20,20 @@ struct MyTestAppIOSApp: App {
                 }
                 .onReceive(NotificationCenter.default.publisher(for: Notification.Name("PauseTimerFromWidget"))) { _ in
                     timerModel.pause()
+                    syncToWatch()
+                    connectivityManager.sendCommand("pause")
                     liveActivityManager.updateActivity(with: timerModel)
                 }
                 .onReceive(NotificationCenter.default.publisher(for: Notification.Name("ResumeTimerFromWidget"))) { _ in
                     timerModel.start()
+                    syncToWatch()
+                    connectivityManager.sendCommand("start")
                     liveActivityManager.updateActivity(with: timerModel)
                 }
                 .onReceive(NotificationCenter.default.publisher(for: Notification.Name("StopTimerFromWidget"))) { _ in
                     timerModel.stop()
+                    syncToWatch()
+                    connectivityManager.sendCommand("stop")
                     liveActivityManager.endActivity()
                 }
         }
@@ -69,5 +75,16 @@ struct MyTestAppIOSApp: App {
         default:
             break
         }
+    }
+
+    // MARK: - Sync to Watch
+    private func syncToWatch() {
+        let timerData = TimerData(
+            state: timerModel.state,
+            elapsedTime: timerModel.elapsedTime,
+            startTime: timerModel.startTime,
+            pausedTime: timerModel.pausedTime
+        )
+        connectivityManager.sendTimerData(timerData)
     }
 }

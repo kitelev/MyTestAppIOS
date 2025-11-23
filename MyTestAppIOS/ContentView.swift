@@ -102,18 +102,21 @@ struct ContentView: View {
     private func startTimer() {
         timerModel.start()
         syncToWatch()
+        connectivityManager.sendCommand("start")
         liveActivityManager.startActivity(with: timerModel)
     }
 
     private func pauseTimer() {
         timerModel.pause()
         syncToWatch()
+        connectivityManager.sendCommand("pause")
         liveActivityManager.updateActivity(with: timerModel)
     }
 
     private func stopTimer() {
         timerModel.stop()
         syncToWatch()
+        connectivityManager.sendCommand("stop")
         liveActivityManager.endActivity()
     }
 
