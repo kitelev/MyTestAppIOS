@@ -68,7 +68,7 @@ struct ContentView: View {
                 HStack {
                     Image(systemName: connectivityManager.isReachable ? "applewatch.radiowaves.left.and.right" : "applewatch.slash")
                         .foregroundColor(connectivityManager.isReachable ? .green : .gray)
-                    Text(connectivityManager.isReachable ? "Watch Connected" : "Watch Not Connected")
+                    Text(connectivityManager.isReachable ? "Watch23 Connected" : "Watch Not Connected")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
