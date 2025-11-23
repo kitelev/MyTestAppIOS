@@ -74,8 +74,15 @@ struct ContentView: View {
                 }
                 .padding(.bottom, 20)
             }
-            .navigationTitle("Timer Sync")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Timer Sync")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.orange)
+                }
+            }
         }
     }
 
