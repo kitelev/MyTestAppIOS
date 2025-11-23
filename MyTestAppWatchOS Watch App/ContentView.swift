@@ -35,6 +35,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .clipShape(Circle())
                     }
+                    .buttonStyle(.plain)
                 } else {
                     // Start Button
                     Button(action: startTimer) {
@@ -45,6 +46,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .clipShape(Circle())
                     }
+                    .buttonStyle(.plain)
                 }
 
                 // Stop Button
@@ -56,6 +58,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .clipShape(Circle())
                 }
+                .buttonStyle(.plain)
                 .disabled(timerModel.state == .idle)
                 .opacity(timerModel.state == .idle ? 0.5 : 1.0)
             }
